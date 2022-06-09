@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timeflask-deployment
+  labels:
+    app: timeflask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: timeflask
+  template:
+    metadata:
+      labels:
+        app: timeflask
+    spec:
+      containers:
+      - name: timeflask-container
+        image: vbrainium/timeflask
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: timeflask-service
+  labels:
+    app: timeflask  
+spec:
+  selector:
+    app: timeflask
+  type: NodePort
+  ports:
+  - port: 8090
+    targetPort: 5050
+    nodePort: 30003
