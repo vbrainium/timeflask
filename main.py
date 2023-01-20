@@ -15,9 +15,11 @@ def current_time():
     IST = pytz.timezone('Asia/Kolkata')
     UST = pytz.timezone('Europe/Kiev')
     CST = pytz.timezone('America/Chicago')
+    PHST = pytz.timezone('Asia/Manila')
 
     output = f"Local Time is <h2>{datetime.now().strftime(format)}</h2><br>" \
              f"Time in Minneapolis is <h2>{datetime.now(CST).strftime(format)}</h2><br>"\
+             f"Time in Manila is <h2>{datetime.now(PHST).strftime(format)}</h2><br>"\
              f"Time in India is <h2>{datetime.now(IST).strftime(format)}</h2><br>"\
              f"Time in Ukraine is <h2>{datetime.now(UST).strftime(format)}</h2><br>"
 
